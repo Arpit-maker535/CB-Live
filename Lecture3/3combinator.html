@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Combinators Example</title>
+    <style>
+      /* Descendant combinator - targets <p> inside <div> */
+      div p {
+        color: blue;
+      }
+      /* Child combinator - targets direct <p> children of <div> */
+      div > p {
+        color: green;
+      }
+      /* Adjacent sibling combinator - targets <p> immediately following <h1> */
+      h1 + p {
+        color: red;
+      }
+      /* General sibling combinator - targets all <p> siblings of <h1> */
+      h1 ~ p {
+        color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Heading</h1>
+    <p>Paragraph next to heading</p>
+    <p>Another paragraph</p>
+    <div>
+      <p>Paragraph inside div</p>
+      <p>Another paragraph inside div</p>
+    </div>
+  </body>
+</html>

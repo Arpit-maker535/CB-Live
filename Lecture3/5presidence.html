@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Precedence Example</title>
+    <style>
+      /* Type selector */
+      p {
+        color: red; /* This will be overridden by class and ID selectors if applied */
+      }
+      /* Class selector */
+      .special {
+        color: blue; /* This will be overridden by the ID selector */
+      }
+      /* ID selector */
+      #unique {
+        color: green; /* This has the highest specificity */
+      }
+      /* Inline style example */
+      .inline {
+        color: purple; /* This is an example of an inline style */
+      }
+    </style>
+  </head>
+  <body>
+    <p>This paragraph is red by default (type selector).</p>
+    <p class="special">This paragraph is blue (class selector).</p>
+    <p id="unique">This paragraph is green (ID selector).</p>
+    <p id="unique" class="special">
+      This paragraph is green (ID selector takes precedence).
+    </p>
+    <p class="inline" style="color: orange">
+      This paragraph is orange (inline style).
+    </p>
+  </body>
+</html>
