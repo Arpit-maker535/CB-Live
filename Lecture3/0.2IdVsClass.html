@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Class vs ID Example</title>
+    <style>
+      .rounded {
+        border-radius: 10px;
+        width: 200px;
+        background-color: lightblue;
+        padding: 20px;
+        text-align: center;
+      }
+
+      #specialDiv {
+        font-weight: bold;
+        color: red;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="rounded" id="specialDiv">
+      This div uses both an ID and a class.
+    </div>
+    <div class="rounded">This div uses just a class.</div>
+  </body>
+</html>

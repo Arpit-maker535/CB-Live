@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Transform Examples</title>
+    <style>
+      /* Base style for all squares */
+      .square {
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+        display: inline-block;
+        color: white;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 100px;
+        text-align: center;
+        transition: transform 0.5s; /* Smooth transition for transform effects */
+      }
+
+      /* Rotate transformation */
+      .rotate {
+        background-color: teal;
+        transform: rotate(45deg); /* Rotates the element 45 degrees clockwise */
+      }
+
+      /* Scale transformation */
+      .scale {
+        background-color: tomato;
+        transform: scale(1.5); /* Increases the size by 50% */
+      }
+
+      /* Combined rotate and scale transformations */
+      .rotate-scale {
+        background-color: slateblue;
+        transform: rotate(30deg) scale(0.8); /* Rotates 30 degrees and scales down to 80% */
+      }
+
+      /* Skew and rotate transformation */
+      .skew-rotate {
+        background-color: seagreen;
+        transform: skewX(20deg) rotate(-30deg); /* Skews X-axis by 20 degrees and rotates -30 degrees */
+      }
+
+      /* Complex transformation: rotate, scale, and translate */
+      .complex {
+        background-color: sienna;
+        transform: rotate(10deg) scale(1.2) translate(30px, 20px); /* Combines rotation, scaling, and moving */
+      }
+
+      /* RotateX transformation */
+      .rotateX {
+        background-color: pink;
+        transform: rotateX(
+          45deg
+        ); /* Rotates the element 45 degrees around the X-axis */
+      }
+
+      /* RotateY transformation */
+      .rotateY {
+        background-color: pink;
+        transform: rotateY(
+          45deg
+        ); /* Rotates the element 45 degrees around the Y-axis */
+      }
+
+      /* Combined rotateX and rotateY transformations */
+      .rotateXY {
+        background-color: pink;
+        transform: rotateX(30deg) rotateY(30deg); /* Rotates 30 degrees around both the X and Y axes */
+      }
+
+      /* RotateX, RotateY, and Scale transformation */
+      .complex-3d {
+        background-color: pink;
+        transform: rotateX(15deg) rotateY(15deg) scale(1.3); /* Combines rotation on X and Y with scaling */
+      }
+
+      /* Rotate, RotateX, RotateY, and Translate */
+      .full-3d {
+        background-color: pink;
+        transform: rotate(10deg) rotateX(20deg) rotateY(30deg)
+          translate(20px, 10px); /* Full 3D rotation and translation */
+      }
+
+      /* Hover effect to further rotate element on mouse over */
+      .square:hover {
+        transform: rotateX(180deg) rotateY(180deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="square rotate">Rotate</div>
+    <div class="square scale">Scale</div>
+    <div class="square rotate-scale">Rotate Scale</div>
+    <div class="square skew-rotate">Skew Rotate</div>
+    <div class="square complex">Complex</div>
+
+    <div class="square rotateX">RotateX</div>
+    <div class="square rotateY">RotateY</div>
+    <div class="square rotateXY">RotateXY</div>
+    <div class="square complex-3d">Complex 3D</div>
+    <div class="square full-3d">Full 3D</div>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+/* Basic styles for the page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f9;
+}
+
+#header {
+    background: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.content {
+    margin: 20px;
+    text-align: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    background-color: #0084ff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+.btn.special {
+    background-color: #ff0078;
+    transition: transform 0.2s ease-out; /* Smooth transition for hover effects */
+}
+.btn.special:hover {
+    transform: rotate(3600deg) scale(10); /* Rotates and scales on hover */
+    transition: transform 5s ease-out; /* Transition for smooth effect */
+}
+
+/* Enhanced Amazing CSS effect with bounce */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+#amazingEffect {
+    margin: 50px auto;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: all 0.5s ease;
+    animation: bounce 2s infinite;
+}
+
+#amazingEffect:hover {
+    width: 300px;
+    height: 300px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, #a777e3, #6e8efb);
+    animation: none; 
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Skew Transformations Example</title>
+    <style>
+      /* Base style for all boxes */
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+        display: inline-block;
+        color: white;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 100px;
+        text-align: center;
+      }
+
+      /* Skew transformation along the X-axis */
+      .skewX {
+        background-color: red;
+        transform: skewX(
+          20deg
+        ); /* Tilts the element by 20 degrees along the X-axis */
+      }
+
+      /* Skew transformation along the Y-axis */
+      .skewY {
+        background-color: blue;
+        transform: skewY(
+          20deg
+        ); /* Tilts the element by 20 degrees along the Y-axis */
+      }
+
+      /* Combined skew transformations along both X and Y axes */
+      .skewXY {
+        background-color: green;
+        transform: skewX(20deg) skewY(20deg); /* Applies both transformations */
+      }
+
+      /* Skew transformation in opposite directions on X and Y axes */
+      .skewOpposite {
+        background-color: purple;
+        transform: skewX(20deg) skewY(-20deg); /* X axis skews 20deg right, Y axis 20deg left */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box skewX">Skew X</div>
+    <div class="box skewY">Skew Y</div>
+    <div class="box skewXY">Skew XY</div>
+    <div class="box skewOpposite">Skew Opposite</div>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Combinators Example</title>
+    <style>
+      /* Descendant combinator (space) */
+      /* Selects all .item elements that are descendants of any .container element */
+      .container .item {
+        color: blue;
+        margin: 10px;
+      }
+
+      /* Child combinator (>) */
+      /* Selects all .child elements that are direct children of any .parent element */
+      .parent > .child {
+        border: 2px solid green;
+      }
+
+      /* Adjacent sibling combinator (+) */
+      /* Selects the first .next immediately after each .previous */
+      .previous + .next {
+        background-color: yellow;
+      }
+
+      /* General sibling combinator (~) */
+      /* Selects all .following elements that share the same parent and follow after .preceding */
+      .preceding ~ .following {
+        padding: 5px;
+        border: 1px dashed red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item">Item 1 (Descendant of container)</div>
+      <div class="item">Item 2 (Descendant of container)</div>
+    </div>
+    <div class="parent">
+      <div class="child">Child 1 (Direct child of parent)</div>
+      <div class="child">Child 2 (Direct child of parent)</div>
+    </div>
+    <div class="parent">
+      <div>Non-targeted Element</div>
+      <!-- Not selected by any combinator -->
+      <div class="child">Child 3 (Direct child of another parent)</div>
+    </div>
+    <div class="previous">Previous Element</div>
+    <div class="next">Next Element (Adjacent to previous)</div>
+    <div class="preceding">Preceding Element</div>
+    <div class="following">Following Element 1 (General sibling)</div>
+  </body>
+</html>
