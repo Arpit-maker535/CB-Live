@@ -1,0 +1,92 @@
+/* Sets the basic styling for the body */
+body {
+    font-family: Arial, sans-serif;  /* Sets the font to Arial with sans-serif fallback */
+    line-height: 1.6;  /* Sets the line height to 1.6 times the font size for better readability */
+    margin: 0;  /* Removes the default margin */
+    padding: 20px;  /* Adds padding of 20px around the content */
+}
+
+/* Styles for the main heading (h1) */
+h1 {
+    text-align: center;  /* Centers the text */
+    margin-bottom: 40px;  /* Adds a margin below the heading */
+}
+
+/* General styling for sections */
+section {
+    margin-bottom: 40px;  /* Adds a margin below each section */
+}
+
+/* Styles for inline elements */
+.inline {
+    display: inline;  /* Sets the display property to inline */
+    background-color: lightblue;  /* Sets the background color */
+    padding: 5px;  /* Adds padding inside the element */
+    margin: 5px;  /* Adds margin around the element */
+}
+
+/* Styles for block elements */
+.block {
+    display: block;  /* Sets the display property to block */
+    background-color: lightgreen;  /* Sets the background color */
+    padding: 10px;  /* Adds padding inside the element */
+    margin: 10px 0;  /* Adds a vertical margin of 10px above and below the element */
+}
+
+/* Styles for inline-block elements */
+.inline-block {
+    display: inline-block;  /* Sets the display property to inline-block */
+    background-color: lightcoral;  /* Sets the background color */
+    padding: 10px;  /* Adds padding inside the element */
+    margin: 10px;  /* Adds margin around the element */
+    width: 100px;  /* Sets a fixed width */
+    text-align: center;  /* Centers the text inside the element */
+}
+
+/* Styles for flex container */
+.flex-container {
+    display: flex;  /* Sets the display property to flex */
+    background-color: lightgoldenrodyellow;  /* Sets the background color */
+    padding: 10px;  /* Adds padding inside the container */
+}
+
+/* Styles for flex items */
+.flex-item {
+    background-color: lightpink;  /* Sets the background color */
+    margin: 10px;  /* Adds margin around the item */
+    padding: 20px;  /* Adds padding inside the item */
+    flex: 1;  /* Allows the item to grow and shrink as needed */
+    text-align: center;  /* Centers the text inside the item */
+}
+
+/* Styles for grid container */
+.grid-container {
+    display: grid;  /* Sets the display property to grid */
+    grid-template-columns: auto auto;  /* Defines a two-column layout */
+    gap: 10px;  /* Sets the gap between grid items */
+    background-color: lightgray;  /* Sets the background color */
+    padding: 10px;  /* Adds padding inside the container */
+}
+
+/* Styles for grid items */
+.grid-item {
+    background-color: lightseagreen;  /* Sets the background color */
+    padding: 20px;  /* Adds padding inside the item */
+    text-align: center;  /* Centers the text inside the item */
+}
+
+/* Styles for justify content container */
+.justify-container {
+    display: flex;  /* Sets the display property to flex */
+    justify-content: space-between;  /* Distributes items evenly with space between */
+    background-color: lightsteelblue;  /* Sets the background color */
+    padding: 10px;  /* Adds padding inside the container */
+}
+
+/* Styles for justify content items */
+.justify-item {
+    background-color: lightcoral;  /* Sets the background color */
+    margin: 10px;  /* Adds margin around the item */
+    padding: 20px;  /* Adds padding inside the item */
+    text-align: center;  /* Centers the text inside the item */
+}

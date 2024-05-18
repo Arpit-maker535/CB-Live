@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Position and Z-Index Demonstration</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        background-color: #f0f0f0;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .box {
+        padding: 20px;
+        margin: 20px;
+        background-color: #4caf50;
+        color: white;
+        border: 2px solid #388e3c;
+        text-align: center;
+        font-size: 1.2em;
+      }
+      /* Static Position */
+      .static {
+        position: static; /* Default positioning */
+      }
+      /* Fixed Position */
+      .fixed {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        background-color: #ff5722;
+      }
+      /* Absolute Position */
+      .absolute-container {
+        position: relative;
+        height: 150px; /* Container height for absolute positioning */
+      }
+      .absolute {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #2196f3;
+      }
+      /* Relative Position */
+      .relative {
+        position: relative;
+        top: 10px;
+        left: 10px;
+        background-color: #ff9800;
+      }
+      /* Sticky Position */
+      .sticky {
+        position: -webkit-sticky; /* For Safari */
+        position: sticky;
+        top: 0;
+        background-color: #9c27b0;
+      }
+      /* Z-Index Example */
+      .z-index-container {
+        position: relative;
+        height: 150px; /* Container height for overlapping */
+      }
+      .z-low {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 1;
+        background-color: rgba(76, 175, 80, 0.5); /* Semi-transparent */
+      }
+      .z-high {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        z-index: 2;
+        background-color: rgba(255, 87, 34, 0.5); /* Semi-transparent */
+      }
+
+      @media screen and (max-width: 400px) {
+        .z-low {
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          z-index: 3;
+          background-color: rgba(76, 175, 80, 0.5); /* Semi-transparent */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS Position and Z-Index Demonstration</h1>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position"
+      >CLICKKKKKK</a
+    >
+
+    <!-- Static Position -->
+    <div class="box static">Static Position</div>
+
+    <!-- Fixed Position -->
+    <div class="box fixed">Fixed Position</div>
+
+    <!-- Absolute Position -->
+    <div class="absolute-container">
+      <div class="box absolute">Absolute Position</div>
+    </div>
+
+    <!-- Relative Position -->
+    <div class="box relative">Relative Position</div>
+
+    <!-- Sticky Position -->
+    <div class="box sticky">Sticky Position</div>
+
+    <!-- Z-Index Example -->
+    <div class="z-index-container">
+      <div class="box z-low">Z-Index Low</div>
+      <div class="box z-high">Z-Index High</div>
+    </div>
+  </body>
+</html>
