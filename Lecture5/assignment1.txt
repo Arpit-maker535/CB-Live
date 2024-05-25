@@ -1,0 +1,27 @@
+Q1: Write a for loop that prints all even numbers from 0 to 20.
+
+Q2: Declare a variable and assign it an integer value. Write a do-while loop that subtracts 2 from the variable and prints the variable’s value until it is less than or equal to 0.
+
+Q3: Write a normal function named square that takes a number as a parameter and returns its square.
+
+Q4: Convert the square function from Question 3 to an arrow function.
+
+Q5: Write a normal function named isEven that takes a number as a parameter and returns true if the number is even, and false otherwise.
+
+Q6: Write an arrow function named isOdd that takes a number as a parameter and returns true if the number is odd, and false otherwise.
+
+Q7: Declare an array with the values [5, 3, 8, 1, 2]. Write code to sort this array in ascending order.
+
+Q8: Write a function named sumArray that takes an array of numbers as a parameter and returns the sum of all the numbers in the array.
+
+Q9: Write a function named filterEvens that takes an array of numbers as a parameter and returns a new array containing only the even numbers from the original array.
+
+Q10: Create an object named person with properties name (a string), age (a number), and city (a string). Write a function named printPerson that takes the person object as a parameter and prints a string describing the person.
+
+Q11: Write a function named sortNames that takes an array of strings as a parameter and returns a new array with the strings sorted in alphabetical order.
+
+Q12: Write a function named reverseArray that takes an array as a parameter and returns a new array with the elements in reverse order.
+
+Q13 : https://leetcode.com/problems/two-sum/
+
+Q14 : You can use build in sort -> https://leetcode.com/problems/sort-an-array/description/
