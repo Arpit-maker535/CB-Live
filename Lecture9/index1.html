@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document.getElementById Examples</title>
+  </head>
+  <body>
+    <h1 id="header">Original Header</h1>
+    <p id="paragraph">This is a paragraph.</p>
+    <button id="button1">Change Header</button>
+    <button id="button2">Change Paragraph</button>
+    <button id="button3">Show Alert</button>
+
+    <script>
+      // Example 1: Changing the content of an element
+      document.getElementById("button1").addEventListener("click", function () {
+        document.getElementById("header").innerText = "Header Changed!";
+      });
+
+      // Example 2: Changing the style of an element
+      document.getElementById("button2").addEventListener("click", function () {
+        document.getElementById("paragraph").style.color = "blue";
+        document.getElementById("paragraph").innerText =
+          "The paragraph text has changed and now it's blue!";
+      });
+
+      // Example 3: Adding an alert with the content of an element
+      document.getElementById("button3").addEventListener("click", function () {
+        alert(document.getElementById("paragraph").innerText);
+      });
+
+      // Example 4: Changing the attribute of an element
+      document
+        .getElementById("paragraph")
+        .setAttribute("data-custom", "customAttribute");
+
+      // Display the custom attribute value in the console
+      console.log(
+        document.getElementById("paragraph").getAttribute("data-custom")
+      );
+    </script>
+  </body>
+</html>

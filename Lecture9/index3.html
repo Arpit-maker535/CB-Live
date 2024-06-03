@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attribute Manipulation Example</title>
+    <style>
+      .editable {
+        border: 1px solid #ccc;
+        padding: 5px;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>HTML Attribute Manipulation Example</h1>
+    <p id="editableParagraph" class="editable">
+      This is a paragraph. Try modifying my attributes!
+    </p>
+    <input type="text" id="inputField" placeholder="Enter some text" />
+
+    <div>
+      <button id="makeEditableButton">Make Editable</button>
+      <button id="removeEditableButton">Remove Editable</button>
+      <button id="enableSpellcheckButton">Enable Spellcheck</button>
+      <button id="disableSpellcheckButton">Disable Spellcheck</button>
+      <button id="setPlaceholderButton">Set Placeholder</button>
+      <button id="removePlaceholderButton">Remove Placeholder</button>
+      <button id="setMaxLengthButton">Set Max Length to 10</button>
+      <button id="removeMaxLengthButton">Remove Max Length</button>
+      <button id="disableInputButton">Disable Input</button>
+      <button id="enableInputButton">Enable Input</button>
+    </div>
+
+    <script>
+      // Make paragraph editable
+      document
+        .getElementById("makeEditableButton")
+        .addEventListener("click", function () {
+          var paragraph = document.getElementById("editableParagraph");
+          paragraph.setAttribute("contenteditable", "true");
+          alert("Paragraph is now editable.");
+        });
+
+      // Remove paragraph editable attribute
+      document
+        .getElementById("removeEditableButton")
+        .addEventListener("click", function () {
+          var paragraph = document.getElementById("editableParagraph");
+          paragraph.removeAttribute("contenteditable");
+          alert("Paragraph is no longer editable.");
+        });
+
+      // Enable spellcheck on paragraph
+      document
+        .getElementById("enableSpellcheckButton")
+        .addEventListener("click", function () {
+          var paragraph = document.getElementById("editableParagraph");
+          paragraph.setAttribute("spellcheck", "true");
+          alert("Spellcheck enabled on paragraph.");
+        });
+
+      // Disable spellcheck on paragraph
+      document
+        .getElementById("disableSpellcheckButton")
+        .addEventListener("click", function () {
+          var paragraph = document.getElementById("editableParagraph");
+          paragraph.setAttribute("spellcheck", "false");
+          alert("Spellcheck disabled on paragraph.");
+        });
+
+      // Set placeholder on input field
+      document
+        .getElementById("setPlaceholderButton")
+        .addEventListener("click", function () {
+          var inputField = document.getElementById("inputField");
+          inputField.setAttribute("placeholder", "New placeholder text");
+          alert("Placeholder set on input field.");
+        });
+
+      // Remove placeholder from input field
+      document
+        .getElementById("removePlaceholderButton")
+        .addEventListener("click", function () {
+          var inputField = document.getElementById("inputField");
+          inputField.removeAttribute("placeholder");
+          alert("Placeholder removed from input field.");
+        });
+
+      // Set max length on input field
+      document
+        .getElementById("setMaxLengthButton")
+        .addEventListener("click", function () {
+          var inputField = document.getElementById("inputField");
+          inputField.setAttribute("maxlength", "10");
+          alert("Max length set to 10 on input field.");
+        });
+
+      // Remove max length from input field
+      document
+        .getElementById("removeMaxLengthButton")
+        .addEventListener("click", function () {
+          var inputField = document.getElementById("inputField");
+          inputField.removeAttribute("maxlength");
+          alert("Max length removed from input field.");
+        });
+
+      // Disable input field
+      document
+        .getElementById("disableInputButton")
+        .addEventListener("click", function () {
+          var inputField = document.getElementById("inputField");
+          inputField.setAttribute("disabled", "true");
+          alert("Input field disabled.");
+        });
+
+      // Enable input field
+      document
+        .getElementById("enableInputButton")
+        .addEventListener("click", function () {
+          var inputField = document.getElementById("inputField");
+          inputField.removeAttribute("disabled");
+          alert("Input field enabled.");
+        });
+    </script>
+  </body>
+</html>

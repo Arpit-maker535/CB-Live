@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Attribute Check and Input Value</title>
+  </head>
+  <body>
+    <h1>Dynamic Attribute Check and Input Value</h1>
+    <form id="inputForm">
+      <label for="inputField">Enter text:</label>
+      <input type="text" id="inputField" placeholder="Enter some text" />
+      <button type="button" id="getValueButton">Get Input Value</button>
+      <button type="button" id="checkAttributesButton">Check Attributes</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+      // Get the value of the input field
+      document
+        .getElementById("getValueButton")
+        .addEventListener("click", function () {
+          var inputField = document.getElementById("inputField");
+          var inputValue = inputField.value;
+          document.getElementById("result").innerText =
+            "Input value: " + inputValue;
+        });
+
+      // Check for specific attributes and display the result
+      document
+        .getElementById("checkAttributesButton")
+        .addEventListener("click", function () {
+          var inputField = document.getElementById("inputField");
+          var attributesToCheck = ["placeholder", "maxlength", "disabled"];
+          var results = [];
+
+          attributesToCheck.forEach(function (attribute) {
+            if (inputField.hasAttribute(attribute)) {
+              results.push(
+                attribute + ": " + inputField.getAttribute(attribute)
+              );
+            } else {
+              results.push(attribute + ": not set");
+            }
+          });
+
+          document.getElementById("result").innerText =
+            "Attributes:\n" + results.join("\n");
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Manipulation Examples</title>
+    <style>
+      .example {
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="header">Original Header</h1>
+    <p id="paragraph" class="example">This is a paragraph.</p>
+    <p class="example">This is another paragraph with the same class.</p>
+    <ul id="list">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+    <button id="button1">Change Header</button>
+    <button id="button2">Change Paragraphs</button>
+    <button id="button3">List Items Alert</button>
+    <button id="button4">Change First Paragraph Style</button>
+    <button id="button5">Highlight All Paragraphs</button>
+
+    <script>
+      // Example using getElementById
+      document.getElementById("button1").addEventListener("click", function () {
+        document.getElementById("header").innerText = "Header Changed!";
+      });
+
+      // Example using getElementsByClassName
+      document.getElementById("button2").addEventListener("click", function () {
+        var paragraphs = document.getElementsByClassName("example");
+        for (var i = 0; i < paragraphs.length; i++) {
+          paragraphs[i].innerText = "Paragraph " + (i + 1) + " changed!";
+        }
+      });
+
+      // Example using getElementsByTagName
+      document.getElementById("button3").addEventListener("click", function () {
+        var listItems = document.getElementsByTagName("li");
+        var itemTexts = [];
+        for (var i = 0; i < listItems.length; i++) {
+          itemTexts.push(listItems[i].innerText);
+        }
+        alert("List Items: " + itemTexts.join(", "));
+      });
+
+      // Example using querySelector
+      document.getElementById("button4").addEventListener("click", function () {
+        var firstParagraph = document.querySelector(".example");
+        firstParagraph.style.color = "green";
+        firstParagraph.style.fontWeight = "bold";
+      });
+
+      // Example using querySelectorAll
+      document.getElementById("button5").addEventListener("click", function () {
+        var allParagraphs = document.querySelectorAll(".example");
+        allParagraphs.forEach(function (paragraph) {
+          paragraph.style.backgroundColor = "yellow";
+        });
+      });
+    </script>
+  </body>
+</html>

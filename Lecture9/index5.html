@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic List Traversal and Manipulation</title>
+  </head>
+  <body>
+    <h1>Dynamic List Traversal and Manipulation</h1>
+    <ul id="itemList">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+      <li>Item 4</li>
+      <li>Item 5</li>
+    </ul>
+
+    <button id="traverseButton">Traverse List</button>
+    <button id="replaceItemButton">Replace Item</button>
+    <button id="removeItemButton">Remove Item</button>
+
+    <div id="result"></div>
+
+    <script>
+      // Function to traverse and display the list items
+      document
+        .getElementById("traverseButton")
+        .addEventListener("click", function () {
+          var listItems = document.querySelectorAll("#itemList li");
+          var result = "List Items:\n";
+          listItems.forEach(function (item, index) {
+            result += "Item " + (index + 1) + ": " + item.innerText + "\n";
+          });
+          document.getElementById("result").innerText = result;
+        });
+
+      // Function to replace the second item in the list
+      document
+        .getElementById("replaceItemButton")
+        .addEventListener("click", function () {
+          var listItems = document.querySelectorAll("#itemList li");
+          if (listItems.length > 1) {
+            var newItem = document.createElement("li");
+            newItem.innerText = "New Item";
+            listItems[1].replaceWith(newItem);
+            alert("Item 2 has been replaced.");
+          } else {
+            alert("The list does not have enough items to replace.");
+          }
+        });
+
+      // Function to remove the last item in the list
+      document
+        .getElementById("removeItemButton")
+        .addEventListener("click", function () {
+          var listItems = document.querySelectorAll("#itemList li");
+          if (listItems.length > 0) {
+            listItems[listItems.length - 1].remove();
+            alert("Last item has been removed.");
+          } else {
+            alert("There are no items to remove.");
+          }
+        });
+    </script>
+  </body>
+</html>

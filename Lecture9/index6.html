@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Using innerHTML</title>
+  </head>
+  <body>
+    <h1>Using innerHTML Example</h1>
+    <div id="content">
+      <p>This is the initial content.</p>
+    </div>
+
+    <button id="changeContentButton">Change Content</button>
+    <button id="addContentButton">Add Content</button>
+    <button id="clearContentButton">Clear Content</button>
+
+    <script>
+      // Function to change the content of the div
+      document
+        .getElementById("changeContentButton")
+        .addEventListener("click", function () {
+          var contentDiv = document.getElementById("content");
+          contentDiv.innerHTML =
+            "<p>New content has been set!</p><p>More new content.</p>";
+        });
+
+      // Function to add content to the div
+      document
+        .getElementById("addContentButton")
+        .addEventListener("click", function () {
+          var contentDiv = document.getElementById("content");
+          contentDiv.innerHTML += "<p>Additional content added.</p>";
+        });
+
+      // Function to clear the content of the div
+      document
+        .getElementById("clearContentButton")
+        .addEventListener("click", function () {
+          var contentDiv = document.getElementById("content");
+          contentDiv.innerHTML = "";
+        });
+    </script>
+  </body>
+</html>
