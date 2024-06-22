@@ -152,33 +152,14 @@ app.get("/items/:id", (req, res) => {
   }
 });
 
-// GET: Retrieve items by name (Query Param)
-// curl -X GET "http://localhost:3000/search?name=Sample"
+// QUERY PARAMS
 app.get("/search", (req, res) => {
   const name = req.query.name;
-  const filteredItems = items.filter((item) => item.name.includes(name));
-  res.json(filteredItems);
-});
-
-// GET: Retrieve items by name with limit (Query Params)
-// curl -X GET "http://localhost:3000/search-limited?name=Sample&limit=2"
-app.get("/search-limited", (req, res) => {
-  const name = req.query.name;
-  const limit = parseInt(req.query.limit, 10) || items.length;
-  const filteredItems = items
-    .filter((item) => item.name.includes(name))
-    .slice(0, limit);
-  res.json(filteredItems);
-});
-
-// GET: Retrieve items by name and sort by ID (Query Params)
-// curl -X GET "http://localhost:3000/search-sort?name=Sample&order=asc"
-app.get("/search-sort", (req, res) => {
-  const name = req.query.name;
-  const order = req.query.order === "desc" ? -1 : 1;
-  const filteredItems = items.filter((item) => item.name.includes(name));
-  filteredItems.sort((a, b) => (a.id - b.id) * order);
-  res.json(filteredItems);
+  const item = items.find((item) => item.name == name);
+  if (item) {
+    return res.status(201).json(item);
+  }
+  return res.status(404).json({ error: "Item not found" });
 });
 
 // Start the server
