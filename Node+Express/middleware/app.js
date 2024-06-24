@@ -21,11 +21,11 @@ app.get("/public", (req, res) => {
 });
 
 // Protected route
-app.get("/protected", (req, res) => {
+app.get("/protected", basicAuth, (req, res) => {
   res.send("This is a protected route.");
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
