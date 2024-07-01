@@ -6,7 +6,7 @@ const axios = require("axios");
 const path = require("path");
 const app = express();
 const port = 3000;
-const apiKey = "a1f5c4a6"; // Replace with your OMDB API key
+const apiKey = "a1f5c4a6";
 
 // Middleware to parse URL-encoded form data
 app.use(express.urlencoded({ extended: true }));
