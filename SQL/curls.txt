@@ -1,0 +1,56 @@
+# Create User
+curl -X POST http://localhost:3000/api/users \
+  -H "Content-Type: application/json" \
+  -d '{"name": "John Doe", "email": "john.doe@example.com"}'
+
+# Create Product
+curl -X POST http://localhost:3000/api/products \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Laptop", "description": "High performance laptop", "price": 1200.00}'
+
+# Create Order
+curl -X POST http://localhost:3000/api/orders \
+  -H "Content-Type: application/json" \
+  -d '{"user_id": 1, "product_id": 1, "quantity": 2}'
+
+# Get One User
+curl http://localhost:3000/api/users/1
+
+# Get All Users
+curl http://localhost:3000/api/users
+
+# Get All Products
+curl http://localhost:3000/api/products
+
+# Get All Orders
+curl http://localhost:3000/api/orders
+
+# Get Order Details
+curl http://localhost:3000/api/orders/1
+
+
+
+
+
+CREATE TABLE blocks.users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE blocks.products (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  price DECIMAL(10, 2) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE blocks.orders (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  product_id INT NOT NULL,
+  quantity INT NOT NULL,
+  order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
