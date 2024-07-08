@@ -1,6 +1,6 @@
-const User = require("./models/User");
-const Product = require("./models/Product");
-const Order = require("./models/Order");
+const User = require("./models/User.js");
+const Product = require("./models/Product.js");
+const Order = require("./models/Order.js");
 
 const createUser = async (name, email) => {
   return await User.create({ name, email });
