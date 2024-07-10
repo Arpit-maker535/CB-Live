@@ -45,6 +45,22 @@ const getOrderDetails = async (order_id) => {
   });
 };
 
+const updateUser = async (id, updates) => {
+  const user = await User.findByPk(id);
+  if (user) {
+    return await user.update(updates);
+  }
+  throw new Error("User not found");
+};
+
+const updateProduct = async (id, updates) => {
+  const product = await Product.findByPk(id);
+  if (product) {
+    return await product.update(updates);
+  }
+  throw new Error("Product not found");
+};
+
 module.exports = {
   createUser,
   createProduct,
@@ -54,4 +70,6 @@ module.exports = {
   getAllProducts,
   getAllOrders,
   getOrderDetails,
+  updateUser,
+  updateProduct,
 };

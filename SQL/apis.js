@@ -9,6 +9,8 @@ const {
   getAllProducts,
   getAllOrders,
   getOrderDetails,
+  updateUser,
+  updateProduct,
 } = require("./functions");
 
 router.post("/users", async (req, res) => {
@@ -91,6 +93,27 @@ router.get("/orders/:id", async (req, res) => {
   } catch (error) {
     console.error("Error fetching order details:", error.stack);
     res.status(500).send("Error fetching order details");
+  }
+});
+router.put("/users/:id", async (req, res) => {
+  try {
+    const updates = req.body;
+    const user = await updateUser(req.params.id, updates);
+    res.json(user);
+  } catch (error) {
+    console.error("Error updating user:", error.stack);
+    res.status(500).send("Error updating user");
+  }
+});
+
+router.put("/products/:id", async (req, res) => {
+  try {
+    const updates = req.body;
+    const product = await updateProduct(req.params.id, updates);
+    res.json(product);
+  } catch (error) {
+    console.error("Error updating product:", error.stack);
+    res.status(500).send("Error updating product");
   }
 });
 
