@@ -1,11 +1,38 @@
 const express = require("express");
+const http = require("http");
+const socketIo = require("socket.io");
+const { sequelize, User, Message } = require("./models");
+const authRoutes = require("./routes/auth");
+const jwt = require("jsonwebtoken");
 const app = express();
-const apiRoutes = require("./apis.js");
+const server = http.createServer(app);
+const io = socketIo(server);
 
 app.use(express.json());
-app.use("/api", apiRoutes);
+app.use(express.static("public"));
+app.use("/auth", authRoutes);
 
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+io.use(async (socket, next) => {
+  const token = socket.handshake.auth.token;
+  try {
+    const payload = jwt.verify(token, "secret");
+    socket.user = await User.findByPk(payload.id);
+    next();
+  } catch (err) {
+    next(new Error("Auth Err"));
+  }
+});
+
+io.on("connection", (socket) => {
+  console.log(`User ${socket.user.username} Connected`);
+
+  socket.on("message", async (text) => {
+    const message = await Message.create({ text, userId: socket.user.id }); // Save to DB
+
+    io.emit("message", { text: message.text, user: socket.user.username });
+  });
+});
+
+server.listen(3000, () => {
+  console.log("Server is running on port 3000");
 });
