@@ -1,38 +1,36 @@
 const express = require("express");
-const http = require("http");
-const socketIo = require("socket.io");
-const { sequelize, User, Message } = require("./models");
-const authRoutes = require("./routes/auth");
-const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
+const User = require("./models/User");
+const Order = require("./models/Order");
+
 const app = express();
-const server = http.createServer(app);
-const io = socketIo(server);
-
 app.use(express.json());
-app.use(express.static("public"));
-app.use("/auth", authRoutes);
 
-io.use(async (socket, next) => {
-  const token = socket.handshake.auth.token;
-  try {
-    const payload = jwt.verify(token, "secret");
-    socket.user = await User.findByPk(payload.id);
-    next();
-  } catch (err) {
-    next(new Error("Auth Err"));
-  }
+const dbUri = "mongodb://localhost:27017/blocks";
+
+mongoose
+  .connect(dbUri)
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.log(err));
+
+app.get("/users", async (req, res) => {
+  const user = await User.find();
+  return res.json(user);
 });
 
-io.on("connection", (socket) => {
-  console.log(`User ${socket.user.username} Connected`);
-
-  socket.on("message", async (text) => {
-    const message = await Message.create({ text, userId: socket.user.id }); // Save to DB
-
-    io.emit("message", { text: message.text, user: socket.user.username });
-  });
+app.get("/order/:email", async (req, res) => {
+  const email = req.params.email;
+  const orders = await Order.find({ customerEmail: email });
+  return res.json(orders);
 });
 
-server.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.post("/users", async (req, res) => {
+  const user = new User(req.body);
+  user.save();
+  return res.json(user);
+});
+
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
