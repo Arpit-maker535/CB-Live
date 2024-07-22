@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   checkLogin();
-
   fetch("/api/books")
     .then((response) => response.json())
     .then((books) => {
@@ -15,8 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <p>${book.author}</p>
             <p>$${book.price}</p>
             <button onclick="orderBook('${book._id}', ${book.price})">Order</button>
-          `;
+        `;
         booksDiv.appendChild(bookDiv);
+        console.log(booksDiv);
       });
     });
 });
@@ -40,14 +40,14 @@ document.getElementById("logout-btn").addEventListener("click", () => {
   alert("Logged out successfully");
   window.location.href = "/";
 });
+
 function orderBook(bookId, price) {
   const token = localStorage.getItem("token");
   if (!token) {
-    alert("Please login to order.");
+    alert("Please Login To Order");
     return;
   }
-
-  fetch("/api/orders", {
+  fetch("api/orders", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -58,7 +58,7 @@ function orderBook(bookId, price) {
       total: price,
     }),
   })
-    .then((response) => response.json())
+    .then((respose) => response.json())
     .then((order) => {
       if (order.error) {
         alert(`Error: ${order.error}`);

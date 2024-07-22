@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const createOrder = async (req, res) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
-    const decoded = jwt.verify(token, "your_jwt_secret");
+    const decoded = jwt.verify(token, "secret");
     const { books, total } = req.body;
 
     if (!books || !total) {
@@ -13,7 +13,7 @@ const createOrder = async (req, res) => {
 
     const order = await Order.create({ user: decoded.id, books, total });
     res.status(201).json(order);
-  } catch (error) {
+  } catch (err) {
     res.status(400).json({ error: error.message });
   }
 };
@@ -21,9 +21,9 @@ const createOrder = async (req, res) => {
 const getOrdersByUser = async (req, res) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
-    const decoded = jwt.verify(token, "your_jwt_secret");
+    const decoded = jwt.verify(token, "secret");
     const orders = await Order.find({ user: decoded.id }).populate(
-      "books.book"
+      " books.book"
     );
     res.json(orders);
   } catch (error) {
