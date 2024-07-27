@@ -24,9 +24,10 @@ export const getAnalytics = async (req, res) => {
   const link = await Link.findOne({ shortUrl });
 
   if (link) {
-    res
-      .status(200)
-      .json({ click: link.clicks, url: link.originalUrl, url2: link.shortUrl });
+    res.status(200).send({
+      originalUrl: link.originalUrl,
+      clicks: link.clicks,
+    });
   } else {
     res.status(404).send("Link not found");
   }

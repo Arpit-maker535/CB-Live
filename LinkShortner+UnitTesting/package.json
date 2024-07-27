@@ -4,7 +4,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "mocha --exit"
+    "test": "mocha --reporter spec --reporter-options showDuration=true --exit"
   },
   "dependencies": {
     "express": "^4.17.1",

@@ -4,7 +4,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test":"mocha --exit"
+    "test": "mocha --exit"
   },
   "keywords": [],
   "author": "",
@@ -12,14 +12,16 @@
   "description": "",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "chai": "^5.1.1",
+    "esm": "^3.2.25",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "mocha": "^10.7.0",
     "mongoose": "^8.5.1",
     "shortid": "^2.2.16"
   },
   "devDependencies": {
+    "chai": "^4.5.0",
+    "chai-http": "^4.4.0",
+    "mocha": "^8.3.2",
     "nodemon": "^3.1.4"
   }
 }

@@ -1,7 +1,7 @@
-import chai from "chai"; // Import Chai assertion library
-import chaiHttp from "chai-http"; // Import Chai HTTP plugin for HTTP integration testing
-import { app } from "../server.js"; // Import the Express app from the server file
-import Link from "../models/link.js"; // Import the Link model
+import chai from "chai";
+import chaiHttp from "chai-http";
+import { app } from "../server.js";
+import Link from "../models/link.js";
 
 const { expect } = chai; // Extract 'expect' assertion style from Chai
 chai.use(chaiHttp); // Use Chai HTTP plugin
@@ -68,7 +68,6 @@ describe("Link Shortener API", () => {
             .request(app) // Initiate another request to the Express app
             .get(`/api/links/${link.shortUrl}/analytics`) // Specify that this is a GET request to the analytics endpoint
             .end((err, res) => {
-              // Define the callback function to handle the response
               // Check if the response status is 200 (OK)
               expect(res).to.have.status(200);
               // Check if the response body contains the original URL
@@ -80,6 +79,60 @@ describe("Link Shortener API", () => {
               expect(res.body).to.have.property("clicks", 1);
               done(); // Indicate that the test is complete
             });
+        });
+    });
+  });
+
+  // Test case for URL not found
+  it("should return 404 for a non-existent short URL", (done) => {
+    chai
+      .request(app)
+      .get("/api/links/nonExistentShortUrl")
+      .end((err, res) => {
+        expect(res).to.have.status(404); // Check if the response status is 404 (Not Found)
+        done();
+      });
+  });
+
+  // Test case for incrementing clicks
+  it("should increment clicks on accessing the short URL", (done) => {
+    const link = new Link({ originalUrl: "https://www.example.com" });
+    link.save().then(() => {
+      chai
+        .request(app)
+        .get(`/api/links/${link.shortUrl}`)
+        .end((err, res) => {
+          chai
+            .request(app)
+            .get(`/api/links/${link.shortUrl}/analytics`)
+            .end((err, res) => {
+              expect(res.body).to.have.property("clicks", 1); // Should be 1 after one access
+              done();
+            });
+        });
+    });
+  });
+
+  // Test case for creating multiple short links
+  it("should create multiple short links", (done) => {
+    const urls = [
+      "https://www.site1.com",
+      "https://www.site2.com",
+      "https://www.site3.com",
+    ];
+    let count = 0;
+
+    urls.forEach((url) => {
+      chai
+        .request(app)
+        .post("/api/links/shorten")
+        .send({ originalUrl: url })
+        .end((err, res) => {
+          expect(res).to.have.status(201);
+          expect(res.body).to.have.property("originalUrl", url);
+          expect(res.body).to.have.property("shortUrl");
+          count += 1;
+          if (count === urls.length) done(); // Call done() when all URLs have been tested
         });
     });
   });
