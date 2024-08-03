@@ -1,14 +1,13 @@
-import "./App.css";
-import Content from "./Content";
-import Footer from "./Footer";
-import Header from "./Header";
+import React from "react";
+import Search from "./components/Search";
+import EffectExamples from "./components/Search";
+
 function App() {
   return (
-    <div>
-      <Header />
-      <Content />
-      <Footer />
+    <div className="App">
+      <EffectExamples />
     </div>
   );
 }
+
 export default App;
