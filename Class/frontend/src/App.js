@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import "./App.css";
+import { useEffect, useState } from "react";
+
 import BlogList from "./components/BlogList";
 import BlogForm from "./components/BlogForm";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
-import "./App.css";
 
 function App() {
   const [blogs, setBlogs] = useState([]);
@@ -11,7 +12,6 @@ function App() {
   const [authenticated, setAuthenticated] = useState(
     !!localStorage.getItem("token")
   );
-
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
 
@@ -62,7 +62,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Blog Platform</h1>
+      <h1>Blog platform</h1>
       {authenticated ? (
         <>
           <button onClick={handleLogout}>Logout</button>

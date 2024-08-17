@@ -2,9 +2,9 @@ import express from "express";
 import Blog from "../models/Blog.js";
 import User from "../models/User.js";
 import { authenticateToken } from "../middleware/authMiddleware.js";
-
 const router = express.Router();
 
+// Route will show all the blogs on our website
 router.get("/", async (req, res) => {
   try {
     const blogs = await Blog.find().populate("author", "email");
@@ -14,6 +14,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// To create a new Blog
 router.post("/", authenticateToken, async (req, res) => {
   const { title, content } = req.body;
   const author = req.user.id;
