@@ -1,43 +1,47 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "./App.css";
-import RecipeInput from "./components/RecipeInput";
-import RecipeList from "./components/RecipeList";
-
+import { useDispatch, useSelector } from "react-redux";
+import { addTask, deleteTask } from "./actions/taskAction";
 const App = () => {
-  const [recipes, setRecipes] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [task, setTask] = useState("");
+  const tasks = useSelector((state) => state.tasks.tasks);
+  const dispatch = useDispatch();
 
-  const getRecipes = async (searchQuery) => {
-    setLoading(true);
-    try {
-      const response = await axios.get(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`
-      );
-      setRecipes(response.data.meals);
-    } catch (e) {
-      console.log(e);
-    }
-    setLoading(false);
-  };
-
-  const handleQueryChange = (searchQuery) => {
-    if (searchQuery) {
-      getRecipes(searchQuery);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (task.trim()) {
+      dispatch(addTask({ id: Date.now(), name: task }));
+      setTask("");
     }
   };
 
   return (
-    <div className="App">
-      <h1>Recipe Finder</h1>
-      <RecipeInput onQueryChange={handleQueryChange} />
-      {loading ? (
-        <div className="loading">Loading</div>
-      ) : (
-        <RecipeList recipes={recipes} />
-      )}
+    <div className="container">
+      <h1>Task Manager</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
+          placeholder="Add a new Task"
+        />
+        <button type="submit">Add</button>
+      </form>
+      <ul>
+        {tasks.length > 0 ? (
+          tasks.map((task) => (
+            <li key={task.id}>
+              {task.name}
+              <button onClick={() => dispatch(deleteTask(task.id))}>
+                DELETE
+              </button>
+            </li>
+          ))
+        ) : (
+          <p>No Task Available. Add a New Task</p>
+        )}
+      </ul>
     </div>
   );
 };
-
 export default App;
