@@ -8,7 +8,7 @@ function BlogList({ blogs }) {
           <h2>{blog.title}</h2>
           <p>{blog.content}</p>
           <p>
-            <em>Author: {blog.author}</em>
+            <em>Author: {blog.author.email}</em> {/* Display author's email */}
           </p>
         </div>
       ))}

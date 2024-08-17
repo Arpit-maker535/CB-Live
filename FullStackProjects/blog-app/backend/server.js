@@ -1,10 +1,10 @@
-// backend/server.js
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import blogRoutes from "./routes/blogRoutes.js";
+import authRoutes from "./routes/authRoutes.js"; // Import auth routes
 
 dotenv.config();
 
@@ -25,6 +25,7 @@ mongoose
 
 // Routes
 app.use("/api/blogs", blogRoutes);
+app.use("/api/auth", authRoutes); // Add auth routes
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

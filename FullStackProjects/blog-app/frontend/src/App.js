@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import BlogList from "./components/BlogList";
 import BlogForm from "./components/BlogForm";
+import LoginForm from "./components/LoginForm";
+import SignupForm from "./components/SignupForm";
 import "./App.css";
 
 function App() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [authenticated, setAuthenticated] = useState(
+    !!localStorage.getItem("token")
+  );
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
 
-  // Fetch blogs from the server
   const fetchBlogs = async () => {
     setLoading(true);
     try {
@@ -21,34 +27,58 @@ function App() {
     }
   };
 
-  // Add a new blog
   const addBlog = async (blog) => {
     try {
       await fetch("http://localhost:5000/api/blogs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify(blog),
       });
-      fetchBlogs(); // Reload blogs after adding
+      fetchBlogs();
     } catch (error) {
       console.error("Error adding blog:", error);
     }
   };
 
+  const handleLogin = () => {
+    setAuthenticated(true);
+    setShowLogin(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setAuthenticated(false);
+  };
+
   useEffect(() => {
-    fetchBlogs();
-  }, []);
+    if (authenticated) {
+      fetchBlogs();
+    }
+  }, [authenticated]);
 
   return (
     <div className="container">
       <h1>Blog Platform</h1>
-      <BlogForm addBlog={addBlog} />
-      {loading ? (
-        <div className="loader">Loading...</div>
+      {authenticated ? (
+        <>
+          <button onClick={handleLogout}>Logout</button>
+          <BlogForm addBlog={addBlog} />
+          {loading ? (
+            <div className="loader">Loading...</div>
+          ) : (
+            <BlogList blogs={blogs} />
+          )}
+        </>
       ) : (
-        <BlogList blogs={blogs} />
+        <>
+          <button onClick={() => setShowLogin(true)}>Login</button>
+          <button onClick={() => setShowSignup(true)}>Signup</button>
+          {showLogin && <LoginForm onLogin={handleLogin} />}
+          {showSignup && <SignupForm />}
+        </>
       )}
     </div>
   );

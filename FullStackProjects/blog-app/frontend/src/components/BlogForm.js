@@ -3,14 +3,12 @@ import React, { useState } from "react";
 function BlogForm({ addBlog }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [author, setAuthor] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addBlog({ title, content, author });
+    addBlog({ title, content });
     setTitle("");
     setContent("");
-    setAuthor("");
   };
 
   return (
@@ -27,13 +25,6 @@ function BlogForm({ addBlog }) {
         placeholder="Content"
         value={content}
         onChange={(e) => setContent(e.target.value)}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Author"
-        value={author}
-        onChange={(e) => setAuthor(e.target.value)}
         required
       />
       <button type="submit">Add Blog</button>
