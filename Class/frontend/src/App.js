@@ -1,21 +1,45 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
-import "bootstrap/dist/css/bootstrap.min.css";
-import AddQuiz from "./components/AddQuiz";
-import Quiz from "./components/Quiz";
+import { useEffect, useState } from "react";
+import "./App.css";
+import Board from "./components/Board";
 
-function App() {
+const CanvasDrawing = () => {
+  const [brushColor, setBrushColor] = useState("black");
+  const [brushSize, setBrushSize] = useState(5);
+
+  useEffect(() => {
+    console.log("CanvasDrawing ", brushSize);
+  }, [brushSize]);
+
   return (
-    <Router>
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/add-quiz" element={<AddQuiz />} />
-          <Route path="/quiz/:id" element={<Quiz />} />
-        </Routes>
+    <div className="App">
+      <h1>Collaborative Whiteboard</h1>
+      <div>
+        <Board brushColor={brushColor} brushSize={brushSize} />
+        <div className="tools">
+          <div>
+            <span>Color: </span>
+            <input
+              type="color"
+              value={brushColor}
+              onChange={(e) => setBrushColor(e.target.value)}
+            />
+          </div>
+          <div>
+            <span>Size: </span>
+            <input
+              type="range"
+              color="#fac176"
+              min="1"
+              max="100"
+              value={brushSize}
+              onChange={(e) => setBrushSize(Number(e.target.value))}
+            />
+            <span>{brushSize}</span>
+          </div>
+        </div>
       </div>
-    </Router>
+    </div>
   );
-}
-export default App;
+};
+
+export default CanvasDrawing;
